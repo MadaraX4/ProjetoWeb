@@ -6,6 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <script>
+        function calcular(){
+        var nome=select_cargo.ip_name.value;
+        var cargo=select_cargo.seu_cargo.value;
+        var salario=select_cargo.salario.value;
+        var aumento=0;
+        var desconto=0;
+        var total=0;
+
+        if (cargo=="Atendente") {
+          aumento=0.08;
+        } else if (cargo=="Estoquista"){
+          aumento=0.06;
+        }else if(cargo=="Gerente"){
+          aumento=0.03;
+        }else{
+          alert("Informe um Cargo!")
+
+        }
+
+        
+        if (salario<=1045.00) {
+          total=parseFloat(salario)-(parseFloat(salario)*0,075)+(parseFloat(salario)*aumento)
+          alert(nome+" O seu salario é "+total)
+        } else if(salario>1045.00 && salario<=2089.60) {
+          total=parseFloat(salario)-(parseFloat(salario)*0,09)+(parseFloat(salario)*aumento)
+          alert(nome+" O seu salario é "+total)
+        }else if(salario>2089.60 && salario<=3134.40){
+          total=parseFloat(salario)-(parseFloat(salario)*0,12)+(parseFloat(salario)*aumento)
+          alert(nome+" O seu salario é "+total)
+        }else{
+          alert("Informe um valor entre os indicados na tabela")
+        }
+        
+        }
+        
+        
+      </script>
+ 
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -79,25 +119,16 @@
         </tbody>
       </table><br><br>
 
-      <form action="">
+      <form name="select_cargo" action="">
         <label for="lb_name">Funcionario</label><br>
-        <input type="text" name="ip_name" id="name" placeholder="Nome completo">
-        <label for=""></label>
+        <input type="text" name="ip_name" id="name" placeholder="Nome completo" style="width: 100%;"><br>
+        <label for="lb_cargo">Cargo</label><br>
+        <input type="text" name="seu_cargo" placeholder="Informe seu Cargo" style="width: 50%;"><br>
+        <label for="lb_salario">Salario</label><br>
+        <input type="text" name="salario" id="salario_id" style="width: 50%;">
+        <input onclick="calcular()" type="button" value="Calcular">
       </form>
 
-      <div class=".container">
-        <div class="row">
-          <div class="col-sm">
-            <h4>Plano de Cargos e Carreira</h4>
-            <div class="col">
-              <h5>Cargo</h5>
-              <td>Atendente</td><br> 
-              <td>Estoquista</td><br>
-              <td>Gerente</td><br>
-            </div>
-
-          </div>
-        </div>
-      </div>
-</body>
+      
+ </body>
 </html>
